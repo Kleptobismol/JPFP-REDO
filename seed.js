@@ -53,7 +53,7 @@ const seed = async () => {
   // Seed database with dummy data
   await Promise.all(campuses.map(campus => Campus.create({
       name: campus.name,
-      imageUrl: campus.imageUrl ? campus.imageUrl : null,
+      imageUrl: campus.imageUrl,
       address: campus.address,
       description: campus.description
     })

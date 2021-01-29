@@ -1,10 +1,8 @@
-// `combineReducers` is not currently being used...but it should!
-// When you're ready to use it, un-comment the line below!
-
 import studentReducer from './student'
 import campusReducer from './campus'
 import {combineReducers} from 'redux'
 
+// Combines our reducers into one parent reducer
 const rootReducer = combineReducers({
   students: studentReducer,
   campuses: campusReducer

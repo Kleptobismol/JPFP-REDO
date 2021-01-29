@@ -24,7 +24,7 @@ export const fetchCampuses = () => {
 };
 
 // Reducer
-export default (state={}, action) => {
+export default (state=[], action) => {
     switch (action.type) {
         case GET_CAMPUSES:
             return action.campuses
