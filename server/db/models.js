@@ -22,7 +22,7 @@ const Campus = db.define('campus', {
     imageUrl: {
         type: STRING,
         isUrl: true,
-        defaultValue: './default_campus.png'
+        defaultValue: 'default_campus.png'
     },
     address: {
         type: STRING,
@@ -68,7 +68,7 @@ const Student = db.define('student', {
     imageUrl: {
         type: STRING,
         isUrl: true,
-        defaultValue: './default_student.jpg'
+        defaultValue: 'default_student.jpg'
     },
     gpa: {
         type: DECIMAL(10, 1),

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchStudents } from '../reducers/student.js';
 
 // This component displays all students in database, including only first and last name
@@ -20,7 +21,8 @@ class AllStudents extends Component {
                     { students.map(student => {
                         return (
                             <li key={ student.id }>
-                                <h3>{ student.firstName } { student.lastName }</h3>
+                                {/* Contains Link to individual student */}
+                                <Link to={'/students/' + student.id}>{ student.firstName } { student.lastName }</Link>
                             </li>
                         )
                     })
@@ -31,7 +33,7 @@ class AllStudents extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({ students: state.students });
+const mapStateToProps = (state) => ({ students: state.students.students });
 
 const mapDispatchToProps = (dispatch) => {
     return {

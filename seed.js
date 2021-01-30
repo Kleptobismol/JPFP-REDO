@@ -63,7 +63,7 @@ const seed = async () => {
     firstName: student.firstName,
     lastName: student.lastName,
     email: student.email,
-    imageUrl: student.imageUrl ? student.imageUrl : null,
+    imageUrl: student.imageUrl,
     gpa: student.gpa,
     campusId: student.campusId ? student.campusId : null 
   })

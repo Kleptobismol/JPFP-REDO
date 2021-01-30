@@ -1,15 +1,30 @@
 import axios from 'axios';
 
+// Initial State
+const initialState = {
+    campuses: [],
+    selectedCampus: {}
+}
+
 // Constants
-const GET_CAMPUSES = 'GET_CAMPUSES';
+const SET_CAMPUSES = 'SET_CAMPUSES';
+const SET_SELECTED_CAMPUS = 'SET_SELECTED_CAMPUS';
 
 // Action Creators
 
-//Initializes campuses or updates after campus creation
+// Initializes campuses or updates after campus creation
 export const setCampuses = (campuses) => {
     return {
-        type: GET_CAMPUSES,
+        type: SET_CAMPUSES,
         campuses
+    }
+};
+
+// Adds selected campus to state or updates selected campus
+export const setCampus = (selectedCampus) => {
+    return {
+        type: SET_SELECTED_CAMPUS,
+        selectedCampus
     }
 };
 
@@ -23,11 +38,21 @@ export const fetchCampuses = () => {
     }
 };
 
+// Fetches single campus data 
+export const fetchCampus = (id) => {
+    return async(dispatch) => {
+        const campus = (await axios.get(`/api/campuses/${ id }`)).data
+        dispatch(setCampus(campus))
+    }
+};
+
 // Reducer
-export default (state=[], action) => {
+export default function campusReducer (state=initialState, action) {
     switch (action.type) {
-        case GET_CAMPUSES:
-            return action.campuses
+        case SET_CAMPUSES:
+            return { ...state, campuses: action.campuses }
+        case SET_SELECTED_CAMPUS:
+            return { ...state, selectedCampus: action.selectedCampus }
         default:
             return state
     }
