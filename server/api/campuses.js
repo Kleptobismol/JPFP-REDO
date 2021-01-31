@@ -27,4 +27,15 @@ router.get('/:id', async(req, res, next) => {
     }
   })
 
+// Set up add campus route
+router.post('/', async(req, res, next) => {
+  try {
+    const campus = await Campus.create(req.body)
+    res.status(201).send(campus)
+  }
+  catch(ex) {
+    next(ex)
+  }
+})
+
 module.exports = router;

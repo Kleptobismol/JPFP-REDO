@@ -27,4 +27,15 @@ router.get('/:id', async(req, res, next) => {
     }
   })
 
+// Set up add student route
+router.post('/', async(req, res, next) => {
+  try {
+    const student = await Student.create(req.body)
+    res.status(201).send(student)
+  }
+  catch(ex) {
+    next(ex)
+  }
+})
+
 module.exports = router;

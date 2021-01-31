@@ -9,10 +9,11 @@ const initialState = {
 // Constants
 const SET_STUDENTS = 'SET_STUDENTS';
 const SET_SELECTED_STUDENT = 'SET_SELECTED_STUDENT';
+const UPDATE = 'UPDATE'
 
 // Action Creators
 
-//Initializes students or updates after student creation
+// Initializes students
 export const setStudents = (students) => {
     return {
         type: SET_STUDENTS,
@@ -20,13 +21,21 @@ export const setStudents = (students) => {
     }
 };
 
-// Adds selected student to state or updates selected student
+// Updates selected student in state
 export const setStudent = (selectedStudent) => {
     return {
         type: SET_SELECTED_STUDENT,
         selectedStudent
     }
 };
+
+// Updates state with new student
+export const updateStudents = (student) => {
+    return {
+        type: UPDATE,
+        student
+    }
+}
 
 // Thunk Creators
 
@@ -46,6 +55,14 @@ export const fetchStudent = (id) => {
     }
 };
 
+// Creates new student
+export const createStudent = (newStudent) => {
+    return async(dispatch) => {
+        const student = (await axios.post(`/api/students`, newStudent)).data
+        dispatch(updateStudents(student))
+    }
+}
+
 // Reducer
 export default (state=initialState, action) => {
     switch (action.type) {
@@ -53,6 +70,8 @@ export default (state=initialState, action) => {
             return { ...state, students: action.students }
         case SET_SELECTED_STUDENT:
             return { ...state, selectedStudent: action.selectedStudent }
+        case UPDATE:
+            return { ...state, students: [ ...state.students, action.student ]}
         default:
             return state
     }

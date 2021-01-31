@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Component } from 'react';
 import { fetchCampuses } from '../reducers/campus.js';
+import CreateCampus from './CreateCampus';
 
 // This component displays all campuses in database, including only image and name
 class AllCampuses extends Component {
@@ -17,6 +18,7 @@ class AllCampuses extends Component {
 
         return (
             <div>
+                <CreateCampus/>
                 <ul>
                     { campuses.map(campus => {
                         return (

@@ -9,10 +9,11 @@ const initialState = {
 // Constants
 const SET_CAMPUSES = 'SET_CAMPUSES';
 const SET_SELECTED_CAMPUS = 'SET_SELECTED_CAMPUS';
+const UPDATE = 'UPDATE'
 
 // Action Creators
 
-// Initializes campuses or updates after campus creation
+// Initializes campuses
 export const setCampuses = (campuses) => {
     return {
         type: SET_CAMPUSES,
@@ -20,13 +21,21 @@ export const setCampuses = (campuses) => {
     }
 };
 
-// Adds selected campus to state or updates selected campus
+// Updates selected campus in state
 export const setCampus = (selectedCampus) => {
     return {
         type: SET_SELECTED_CAMPUS,
         selectedCampus
     }
 };
+
+// Updates state with new campus
+export const updateCampuses = (campus) => {
+    return {
+        type: UPDATE,
+        campus
+    }
+}
 
 //Thunk Creators
 
@@ -46,6 +55,14 @@ export const fetchCampus = (id) => {
     }
 };
 
+// Creates new campus
+export const createCampus = (newCampus) => {
+    return async(dispatch) => {
+        const campus = (await axios.post(`/api/campuses`, newCampus)).data
+        dispatch(updateCampuses(campus))
+    }
+}
+
 // Reducer
 export default function campusReducer (state=initialState, action) {
     switch (action.type) {
@@ -53,6 +70,8 @@ export default function campusReducer (state=initialState, action) {
             return { ...state, campuses: action.campuses }
         case SET_SELECTED_CAMPUS:
             return { ...state, selectedCampus: action.selectedCampus }
+        case UPDATE:
+            return { ...state, campuses: [ ...state.campuses, action.campus ]}
         default:
             return state
     }

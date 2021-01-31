@@ -25,15 +25,18 @@ class SingleStudent extends Component {
             return null
         }
 
+        // Initialize this boolean to be used in our HTML below
+        const campusExists = student.campus != null && student.campus.id
+
         return (
             <div>
                 <h1>{ student.firstName } { student.lastName }</h1>
                 <img src={ window.location.origin + '/' + student.imageUrl }/>
                 <h3> Email: { student.email }</h3>
                 <h3> GPA: { student.gpa }</h3>
-                <h2>{ student.campus.id ? 'Campus' : noCampusMessage }</h2>
+                <h2>{ campusExists ? 'Campus' : noCampusMessage }</h2>
                 { 
-                    student.campus.id ? 
+                    campusExists ? 
                     <Link to={'/campuses/' + student.campus.id}>{ student.campus.name }</Link>
                     : null
                 }
