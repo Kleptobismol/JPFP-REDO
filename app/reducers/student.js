@@ -63,6 +63,14 @@ export const createStudent = (newStudent) => {
     }
 }
 
+// Deletes student
+export const deleteStudent = (id) => {
+    return async () => {
+        await axios.delete(`/api/students/${ id }`)
+        fetchStudents();
+    }
+}
+
 // Reducer
 export default (state=initialState, action) => {
     switch (action.type) {

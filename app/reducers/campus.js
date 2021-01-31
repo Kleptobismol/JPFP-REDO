@@ -63,6 +63,14 @@ export const createCampus = (newCampus) => {
     }
 }
 
+// Deletes campus
+export const deleteCampus = (id) => {
+    return async () => {
+        await axios.delete(`/api/campuses/${ id }`)
+        fetchCampuses();
+    }
+}
+
 // Reducer
 export default function campusReducer (state=initialState, action) {
     switch (action.type) {

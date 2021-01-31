@@ -38,4 +38,16 @@ router.post('/', async(req, res, next) => {
   }
 })
 
+// Set up delete student route
+router.delete('/:id', async(req, res, next) => {
+  try {
+    const student = await Student.findByPk(req.params.id)
+    await student.destroy()
+    res.send(student)
+  }
+  catch(ex) {
+    next(ex)
+  }
+})
+
 module.exports = router;
