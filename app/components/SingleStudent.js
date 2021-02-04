@@ -29,11 +29,12 @@ class SingleStudent extends Component {
         const campusExists = student.campus != null && student.campus.id
 
         return (
-            <div>
+            <div className='singleStudent'>
                 <h1>{ student.firstName } { student.lastName }</h1>
                 <img src={ window.location.origin + '/' + student.imageUrl }/>
-                <h3> Email: { student.email }</h3>
-                <h3> GPA: { student.gpa }</h3>
+                <h2> { student.email }</h2>
+                <h2> { student.gpa } GPA </h2>
+                <br></br><br></br>
                 <h2>{ campusExists ? 'Campus' : noCampusMessage }</h2>
                 { 
                     campusExists ? 

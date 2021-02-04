@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // This component is the Navbar, containing links to our Routes
 export default function Nav () {
     return (
-        <nav>
+        <nav id='navMain'>
             <Link to='/'>
                 Home
             </Link>

@@ -39,7 +39,7 @@ class CreateCampus extends Component {
         const { name, address, imageUrl, description } = this.state;
 
         return (
-            <div>
+            <div className='form'>
                 <h3> Create New Campus </h3>
                 <form onSubmit={ handleSubmit }>
                     <label> Name </label>
@@ -50,7 +50,7 @@ class CreateCampus extends Component {
                     <input name='imageUrl' onChange={ handleChange } value={ imageUrl }></input>
                     <label> Description (Optional) </label>
                     <input name='description' onChange={ handleChange } value={ description }></input>
-                    <button type='submit'> Create </button>
+                    <button className='create' type='submit'> Create </button>
                 </form>
             </div>
         )

@@ -28,14 +28,17 @@ class AllCampuses extends Component {
         return (
             <div>
                 <CreateCampus/>
-                <ul>
+                <div className='allHeader'>
+                    <h3> Campuses </h3>
+                </div>
+                <ul className='campus'>
                     { campuses.map(campus => {
                         return (
-                            <li key={ campus.id }>
-                                <button type='button' onClick={ event => handleDelete(event, campus.id) }>X</button>
+                            <li key={ campus.id } className='campus'>
+                                <button className='delete' type='button' onClick={ event => handleDelete(event, campus.id) }>X</button>
                                 {/* Contains Link to individual campus */}
-                                <Link to={'/campuses/' + campus.id}>{ campus.name }</Link>
-                                <img src={ campus.imageUrl }/>
+                                <Link className='campus'to={'/campuses/' + campus.id}>{ campus.name }</Link>
+                                <img className='campus' src={ campus.imageUrl }/>
                             </li>
                         )
                     })

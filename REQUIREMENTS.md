@@ -130,7 +130,7 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 - [ ] If a user attempts to view a student/campus that doesn't exist, a helpful message should be displayed
 - [ ] Whenever a component needs to wait for data to load from the server, a "loading" message should be displayed until the data is available
 - [ ] Has a working `seed` file, that seeds the db with complete student and campus instances.
-- [ ] Overall, the app is spectacularly styled and visually stunning
+- [x] Overall, the app is spectacularly styled and visually stunning
 
 </details>
 

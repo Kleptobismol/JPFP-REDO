@@ -25,10 +25,10 @@ class SingleCampus extends Component {
         }
 
         return (
-            <div>
+            <div className='singleCampus'>
                 <h1>{ campus.name }</h1>
                 <img src={ window.location.origin + '/' + campus.imageUrl }/>
-                <h3>{ campus.address }</h3>
+                <h2>{ campus.address }</h2>
                 <p>{ campus.description }</p>
                 <h2>{ campus.students.length > 0 ? 'Students' : noStudentsMessage }</h2>
                 { campus.students.length > 0 ?

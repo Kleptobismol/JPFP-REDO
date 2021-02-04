@@ -4,9 +4,6 @@ import React from 'react'
 const Home = () => {
   return (
     <div>
-      <nav>
-        Welcome!
-      </nav>
       <main>
         <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
       </main>

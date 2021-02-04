@@ -40,7 +40,7 @@ class CreateStudent extends Component {
         const { firstName, lastName, email, imageUrl, gpa } = this.state;
 
         return (
-            <div>
+            <div className='form'>
                 <h3> Create New Student </h3>
                 <form onSubmit={ handleSubmit }>
                     <label> First Name </label>
@@ -53,7 +53,7 @@ class CreateStudent extends Component {
                     <input name='imageUrl' onChange={ handleChange } value={ imageUrl }></input>
                     <label> GPA </label>
                     <input name='gpa' onChange={ handleChange } value={ gpa }></input>
-                    <button type='submit'> Create </button>
+                    <button className='create' type='submit'> Create </button>
                 </form>
             </div>
         )

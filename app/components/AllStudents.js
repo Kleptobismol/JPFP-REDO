@@ -28,13 +28,16 @@ class AllStudents extends Component {
         return (
             <div>
                 <CreateStudent/>
-                <ul>
+                <div className='allHeader'>
+                    <h3> Students </h3>
+                </div>
+                <ul className='student'>
                     { students.map(student => {
                         return (
-                            <li key={ student.id }>
-                                <button type='button' onClick={ event => handleDelete(event, student.id) }>X</button>
+                            <li className='student' key={ student.id }>
+                                <button className='delete' type='button' onClick={ event => handleDelete(event, student.id) }>X</button>
                                 {/* Contains Link to individual student */}
-                                <Link to={'/students/' + student.id}>{ student.firstName } { student.lastName }</Link>
+                                <Link className='student' to={'/students/' + student.id}>{ student.firstName } { student.lastName }</Link>
                             </li>
                         )
                     })
